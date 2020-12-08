@@ -16,6 +16,6 @@
 	/*每个页面公共css */
 	@import "uview-ui/index.scss";
 	@import "@/common/style/iconfont.css";
-	@import "@/common/style/base.scss"
+	@import "@/common/style/base.scss";
 </style>
 

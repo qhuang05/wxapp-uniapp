@@ -1,6 +1,6 @@
 const install = (Vue, vm) => {
 	Vue.prototype.$u.http.setConfig({
-		baseUrl: '/api',
+		baseUrl: 'https://www.test.com',
 		// originalData: true, 
 		// header: {
 		// 	'content-type': 'xxx'
@@ -8,7 +8,7 @@ const install = (Vue, vm) => {
 	});
 	// 请求拦截，配置Token等参数
 	Vue.prototype.$u.http.interceptor.request = (config) => {
-		config.header.Token = 'xxxxxx';
+		config.header.Token = vm.vuex_token;
 		
 		// 方式一，存放在vuex的token，假设使用了uView封装的vuex方式，见：https://uviewui.com/components/globalVariable.html
 		// config.header.token = vm.token;
@@ -29,7 +29,9 @@ const install = (Vue, vm) => {
 	Vue.prototype.$u.http.interceptor.response = (res) => {
 		if(res.code == 200) {
 			return res.data;  
-		} else return false;
+		} else{
+			return false;
+		}
 	}
 }
 

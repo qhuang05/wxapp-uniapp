@@ -57,6 +57,24 @@
 				"meta": {
 					"auth": true
 				}
+			},
+			{
+				"path": "pay/index",
+				"style": {
+					"navigationBarTitleText": "支付"
+				},
+				"meta": {
+					"auth": true
+				}
+			},
+			{
+				"path": "share/index",
+				"style": {
+					"navigationBarTitleText": "分享"
+				},
+				"meta": {
+					"auth": true
+				}
 			}
 		]
 	},{

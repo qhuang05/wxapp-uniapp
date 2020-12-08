@@ -18,5 +18,18 @@
 		},
 		computed: {
 			...mapState($uStoreKey)
+		},
+		methods: {
+			openPage(path, type="navigateTo", params){
+				this.$u.route({url: path, type, params})
+			}
+		},
+		// 分享给朋友
+		onShareAppMessage(res){
+
+		},
+		// 分享到朋友圈
+		onShareTimeline(res){
+			
 		}
 	}

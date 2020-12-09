@@ -27,7 +27,7 @@
 			<view class="loading">加载中...</view>
 			<view class="totop" @click="scrollToTop">Top</view>
 		</view>
-<!-- 		<u-tabbar 
+		<!-- <u-tabbar 
 			:list="vuex_tabbar_main"
 			active-color="#f00" 
 			inactive-color="#333"

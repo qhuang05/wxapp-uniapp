@@ -4,6 +4,10 @@
 			<view>地址管理</view>
 			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
 		</view>
+		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleA/upload/index')">
+			<view>图片上传/下载</view>
+			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
+		</view>
 		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleA/pay/index')">
 			<view>支付</view>
 			<u-icon name="arrow-right" color="#333" size="24"></u-icon>

@@ -1,23 +1,29 @@
 <template>
 	<view class="u-page">
-		<u-form :model="form" ref="uForm" label-width="120">
-			<u-form-item label="姓名" prop="name">
-				<u-input v-model="form.name" placeholder="请输入收货人姓名"></u-input>
-			</u-form-item>
-			<u-form-item label="手机号" prop="mobile">
-				<u-input v-model="form.mobile" type="number" placeholder="请输入手机号"></u-input>
-			</u-form-item>
-			<u-form-item label="所在地区" prop="region">
-				<u-input v-model="form.region" :disabled="true" placeholder="省市区县、乡镇等" @click="showRegionPicker"></u-input>
-			</u-form-item>
-			<u-form-item label="详细地址" prop="address">
-				<u-input v-model="form.address" placeholder="街道、楼牌等"></u-input>
-			</u-form-item>
-			<u-form-item label="是否默认">
-				<u-switch v-model="form.isDefault"></u-switch>
-			</u-form-item>
-		</u-form>
-		<u-button type="primary" @click="save">保存</u-button>
+		<view class="address-form">
+			<u-form :model="form" ref="addressForm" label-width="150">
+				<u-form-item label="姓名" prop="name">
+					<u-input v-model="form.name" placeholder="请输入收货人姓名"></u-input>
+				</u-form-item>
+				<u-form-item label="手机号" prop="mobile">
+					<u-input v-model="form.mobile" type="number" placeholder="请输入手机号"></u-input>
+				</u-form-item>
+				<u-form-item label="所在地区" prop="region">
+					<u-input v-model="form.region" :disabled="true" placeholder="省市区县、乡镇等" @click="showRegionPicker"></u-input>
+				</u-form-item>
+				<u-form-item label="详细地址" prop="address">
+					<u-input v-model="form.address" placeholder="街道、楼牌等"></u-input>
+				</u-form-item>
+				<u-form-item label="是否默认">
+					<view class="u-flex u-row-right">	
+						<u-switch v-model="form.isDefault"></u-switch>
+					</view>
+				</u-form-item>
+			</u-form>
+			<view class="u-margin-top-50">	
+				<u-button type="primary" @click="save">保存</u-button>
+			</view>
+		</view>
 		
 		<u-picker 
 			v-model="isShowRegionPicker" 
@@ -49,12 +55,16 @@
 					],
 					mobile: [
 						{required: true, message:'请输入手机号', trigger: 'blur'},
-						// {pattern: /\d/, message:'手机号码不正确', trigger: 'blur'},
+						// {pattern: /^[1][3,4,5,6,7,8][0-9]{9}$/, message:'请输入正确的手机号', trigger: 'blur'},
 						{
 							validator: (rule, value, callback) => {
-								return this.$u.test.mobile(value);
+								const reg = /^[1][3,4,5,6,7,8][0-9]{9}$/;
+								if(!reg.test(value)){
+									callback(new Error('请输入正确的手机号'));
+								} else{
+									callback();
+								}
 							},
-							message: '手机号码不正确',
 							trigger: ['change','blur']
 						}
 					],
@@ -76,9 +86,12 @@
 		},
 		methods: {
 			save(){
-				this.$refs.uForm.validate(valid => {
+				this.$refs.addressForm.validate(valid => {
 					if(valid){
 						console.log('save => ', this.form);
+						uni.showToast({
+							title: '地址保存成功'
+						})
 					}
 				})
 			},
@@ -86,6 +99,7 @@
 				this.isShowRegionPicker = true;
 			},
 			changeRegion(data){
+				console.log('region => ', data);
 				let {province, city, area} = data;
 				this.$set(this.form, 'province', province.label);
 				this.$set(this.form, 'city', city.label);
@@ -94,14 +108,24 @@
 			}
 		},
 		onReady(){
-			this.$refs.uForm.setRules(this.rules);
+			this.$refs.addressForm.setRules(this.rules);
 		},
 		onLoad(options){
 			console.log('options => ', options);
+			if(options.id){
+				 this.form = Object.assign({}, this.form, options);
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	
+	page{
+		background-color: #fff;
+	}
+</style>
+<style lang="scss" scoped>
+	.address-form{
+		padding: 0 30rpx;
+	}
 </style>

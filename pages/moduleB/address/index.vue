@@ -63,10 +63,10 @@
 			addressHandler(type, item){
 				switch(type){
 					case 'add':
-						this.openPage('/pages/moduleA/address/edit');
+						this.openPage('/pages/moduleB/address/edit');
 						break;
 					case 'edit':
-						this.openPage('/pages/moduleA/address/edit', 'navigateTo', item);
+						this.openPage('/pages/moduleB/address/edit', 'navigateTo', item);
 						break;
 					case 'delete':
 						break;

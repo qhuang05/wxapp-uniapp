@@ -27,12 +27,6 @@
 			<view class="loading">加载中...</view>
 			<view class="totop" @click="scrollToTop">Top</view>
 		</view>
-		<!-- <u-tabbar 
-			:list="vuex_tabbar_main"
-			active-color="#f00" 
-			inactive-color="#333"
-			:before-switch="routeAuth"
-		></u-tabbar> -->
 	</view>
 </template>
 
@@ -85,6 +79,9 @@
 			},
 			onLoad(options){
 				console.log('页面参数：', options);
+			},
+			onShow(){
+				this.getData(true);
 				
 				let sysInfo = uni.getSystemInfoSync();
 				let _top = sysInfo.statusBarHeight + 44;
@@ -92,13 +89,9 @@
 					// px转rpx
 					this.stickyTop = _top/(uni.upx2px(_top)/_top);
 				// #endif
-				
 				uni.createSelectorQuery().select('#tabBar').boundingClientRect(res => {
 					this.tabBarTop = res.top - _top;
 				}).exec();
-			},
-			onShow(){
-				this.getData(true);
 			},
 			onReachBottom(){
 				this.getData();

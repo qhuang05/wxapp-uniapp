@@ -1,7 +1,7 @@
 <template>
 	<view class="u-page">
 		<view class="address-form">
-			<u-form :model="form" ref="addressForm" label-width="150">
+			<u-form :model="form" ref="addressForm" label-width="150" :error-type="errorType">
 				<u-form-item label="姓名" prop="name">
 					<u-input v-model="form.name" placeholder="请输入收货人姓名"></u-input>
 				</u-form-item>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+	import {validateMobile} from '@/common/js/validator.js'
 	export default {
 		data(){
 			return {
@@ -55,17 +56,18 @@
 					],
 					mobile: [
 						{required: true, message:'请输入手机号', trigger: 'blur'},
-						// {pattern: /^[1][3,4,5,6,7,8][0-9]{9}$/, message:'请输入正确的手机号', trigger: 'blur'},
+						{validator: validateMobile, trigger: ['change', 'blur']},
 						{
-							validator: (rule, value, callback) => {
-								const reg = /^[1][3,4,5,6,7,8][0-9]{9}$/;
-								if(!reg.test(value)){
-									callback(new Error('请输入正确的手机号'));
-								} else{
-									callback();
-								}
-							},
-							trigger: ['change','blur']
+							asyncValidator: (rule, value, callback) => {
+								// let ret = await this.$u.api.checkMobileExist({mobile: value});
+								setTimeout(()=>{
+									if(value == '15606920253'){
+										callback(new Error('手机号已存在'));
+									} else {
+										callback();
+									}
+								}, 600);
+							}
 						}
 					],
 					region: [
@@ -75,7 +77,8 @@
 						{required: true, message:'请输入街道、楼牌等', trigger: 'blur'},
 					]
 				},
-				isShowRegionPicker: false
+				isShowRegionPicker: false,
+				errorType: ['message']
 			}
 		},
 		computed: {

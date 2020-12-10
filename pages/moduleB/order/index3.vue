@@ -12,7 +12,7 @@
 				bar-height="4"
 				bar-style="{'background': 'linear-gradient(270deg, #FF8487 0%, #FF4D4F 100%)'}"
 				font-size="29"
-				active-color="#333"
+				active-color="#FF4D4F"
 				inactive-color="#999"
 			></u-tabs-swiper>
 		</view>

@@ -47,7 +47,7 @@ export function validateIdCard(rule, value, callback){
 }
 
 export function validateEmail(rule, value, callback){
-	const reg = /^[A-Za-z0-9._%-]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,4}$/;
+	const reg = patterns.email;
 	if(!value){
 		callback(new Error('请输入邮箱'));
 	} else if(!reg.test(value)){

@@ -60,7 +60,7 @@
 						this.listData.push(i);
 					}
 					this.refreshTriggered = false;
-				}, 1500);
+				}, 1000);
 			},
 			changeTab(index){
 				this.currentTab = index;

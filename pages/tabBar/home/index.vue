@@ -63,7 +63,7 @@
 					for(let i=0; i<20; i++){
 						this.listData.push(i);
 					}
-				}, 1500);
+				}, 1000);
 			},
 			changeTab(index){
 				this.currentTab = index;

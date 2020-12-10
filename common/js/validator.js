@@ -1,8 +1,9 @@
 /*
  * @Description: async-validator校验函数合集
  */
+import patterns from './patterns.js'
 export function validateMobile(rule, value, callback) {
-	const reg = /^1[3|4|5|7|8]\d{9}$/;
+	const reg = patterns.mobile;
 	if(!value){
 		callback(new Error('请输入手机号码'));
 	} else if(!reg.test(value)){
@@ -13,7 +14,7 @@ export function validateMobile(rule, value, callback) {
 }
 
 export function validateTelephone(rule, value, callback){
-	const reg = /^(\d{3,4}-)?\d{7,8}$/;
+	const reg = patterns.telephone;
 	if(!value){
 		callback(new Error('请输入电话号码'));
 	} else if(!reg.test(value)){
@@ -24,7 +25,7 @@ export function validateTelephone(rule, value, callback){
 }
 
 export function validatePhone(rule, value, callback){
-	const reg = /^(1[3|4|5|7|8]\d{9})|((\d{3,4}-)?\d{7,8})$/;
+	const reg = patterns.phone;
 	if(!value){
 		callback(new Error('请输入电话号码'));
 	} else if(!reg.test(value)){
@@ -35,7 +36,7 @@ export function validatePhone(rule, value, callback){
 }
 
 export function validateIdCard(rule, value, callback){
-	const reg = /^\d{17}[0-9X]$/;
+	const reg = patterns.idCard;
 	if(!value){
 		callback(new Error('请输入身份证号码'));
 	} else if(!reg.test(value)){
@@ -57,7 +58,7 @@ export function validateEmail(rule, value, callback){
 }
 
 export function validatePostCode(rule, value, callback){
-	const reg = /^\d{6}$/;
+	const reg = patterns.postCode;
 	if(!value){
 		callback(new Error('请输入邮编'));
 	} else if(!reg.test(value)){
@@ -68,7 +69,7 @@ export function validatePostCode(rule, value, callback){
 }
 
 export function validateUsername(rule, value, callback){
-	const reg = /^[0-9a-zA-Z_]{4,30}$/;
+	const reg = patterns.username
 	if(!value){
 		callback(new Error('请输入用户名'));
 	} else if(!reg.test(value)){
@@ -79,8 +80,8 @@ export function validateUsername(rule, value, callback){
 }
 
 export function validatePassword(rule, value, callback){
-	const reg = /^[a-zA-Z]\w{5,17}$/;
-	// const reg = /^(?=.*\d)(?=.*[A-z]).{6,18}$/;
+	const reg = patterns.password
+	// const reg = patterns.password2;
 	if(!value){
 		callback(new Error('请输入密码'));
 	} else if(!reg.test(value)){

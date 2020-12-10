@@ -32,6 +32,10 @@
 			<view>订单管理2</view>
 			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
 		</view>
+		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleB/order/index3')">
+			<view>订单管理3</view>
+			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
+		</view>
 	</view>
 </template>
 

@@ -1,7 +1,11 @@
 <template>
 	<view>
-		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleB/chart/index')">
-			<view>图表</view>
+		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleB/chart/pie')">
+			<view>图表(饼图/圆环图)</view>
+			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
+		</view>
+		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleB/chart/candle')">
+			<view>图表(K线图)</view>
 			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
 		</view>
 	</view>

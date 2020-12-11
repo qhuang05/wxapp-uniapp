@@ -21,7 +21,7 @@ export default {
 		touchChart(e, chartId){
 			this[chartId].showToolTip(e, {
 				format: function (item) {
-					return item.name + ': ' + item.data; 
+					return item.name + ': ' + item.data;
 				}
 			});
 			this[chartId].touchLegend(e, {animation:true});

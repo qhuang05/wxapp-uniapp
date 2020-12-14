@@ -78,6 +78,15 @@
 				"meta": {
 					"auth": true
 				}
+			},
+			{
+				"path": "contact/index",
+				"style": {
+					"navigationBarTitleText": "联系客服"
+				},
+				"meta": {
+					"auth": true
+				}
 			}
 		]
 	},{
@@ -193,7 +202,7 @@
 	    "list": [
 			{
 	            "name": "custom", //模式名称
-	            "path": "pages/moduleB/chart/candle", //启动页面，必选
+	            "path": "pages/moduleA/contact/index", //启动页面，必选
 	            "query": "autoplay=false&type=1" //启动参数，在页面的onLoad函数里面得到
 	        }
 	    ]

@@ -16,6 +16,10 @@
 			<view>图片上传/下载</view>
 			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
 		</view>
+		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleA/contact/index')">
+			<view>在线客服</view>
+			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
+		</view>
 		<view class="panel-item u-flex u-row-between u-col-center" @tap="openPage('/pages/moduleA/customIcon/index')">
 			<view>自定义字体图标</view>
 			<u-icon name="arrow-right" color="#333" size="24"></u-icon>
